@@ -13,6 +13,10 @@ console.log(stateFromStore);
 // 2. dispatch : permet d'emettre une intention en direction du store
 // à charge pour le store (plus particulièrement pour reducer de traduire cette intention en modification du state))
 
+// 3. suscribe : permet d'aboner des fonctions aux modifications du state 
+// permet de rafraichir et appeler toutes les fonctions de rendu 
+// avec React pas besoin de ça 
+
 
 // == State
 // const state = {
@@ -59,6 +63,11 @@ renderNbColors();
 renderGradient();
 renderColors();
 
+//=== on va abonner nos fonctions de rendu aux mises à jour du state
+store.suscribe(renderColors);
+store.suscribe(renderGradient);
+store.suscribe(renderNbColors);
+
 // == Controls
 // bouton Random All : on ajoute un écouteur d'event
 document.getElementById('randAll')
@@ -104,13 +113,12 @@ document.getElementById('toLeft')
     // une intention = un objet action qui doit contenir une propriété type
     store.dispatch({ type : 'CHANGE_DIRECTION_TO_LEFT' });
 
-    renderGradient();
+    // plus besoin d'appeler les fonctions de rendu car on s'est abonné aux mises à jour du state
+    // renderGradient();
     // renderColors();
   });
 
 document.getElementById('toRight')
   .addEventListener('click', () => {
     store.dispatch({type : 'CHANGE_DIRECTION_TO_RIGHT'}); 
-    renderGradient();
-    // renderColors();
   });
