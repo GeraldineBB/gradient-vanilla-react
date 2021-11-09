@@ -108,3 +108,26 @@ document.getElementById('toRight')
   .addEventListener('click', () => {
     store.dispatch({type : 'CHANGE_DIRECTION_TO_RIGHT'}); 
   });
+
+// challenge du soir : on écoute les évents sur le bouton
+// on donne un ordre, le reducer va interpreter l'ordre ensuite
+
+document.getElementById('to45degree')
+.addEventListener('click', () => {
+  store.dispatch({type : 'CHANGE_DIRECTION_DEGREES', direction : '45deg'})
+}); 
+
+document.getElementById('to135degree')
+.addEventListener('click', () => {
+  store.dispatch({type : 'CHANGE_DIRECTION_DEGREES', direction : '135deg'})
+}); 
+
+document.getElementById('to225degree')
+.addEventListener('click', () => {
+  store.dispatch({type : 'CHANGE_DIRECTION_DEGREES', direction : '225deg'})
+});
+
+document.getElementById('to315degree')
+.addEventListener('click', () => {
+  store.dispatch({type : 'CHANGE_DIRECTION_DEGREES', direction : '315deg'})
+});

@@ -22,7 +22,7 @@ const initialState = {
 // à partir de : 
 // - l'état actuel du state (initialState)
 // - l'action à accomplir 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action = {}) => {
   console.log(`je dois :  ${action.type}`);
 
   // if (action.type === 'CHANGE_DIRECTION_TO_LEFT') {
@@ -78,6 +78,11 @@ const reducer = (state = initialState, action) => {
       nbColors: state.nbColors +1
       }
   
+    case 'CHANGE_DIRECTION_DEGREES':
+      return {
+        ...state,
+        direction: action.direction, 
+      }
 
     default:
       // quand on sait pas faire il vaut mieux rien faire
