@@ -36,11 +36,13 @@ function renderColors() {
 }
 
 // == Initialisation
+// je m'appuyer sur les données initiales pour afficher le rendu initial
 renderNbColors();
 renderGradient();
 renderColors();
 
 // == Controls
+// bouton Random All : on ajoute un écouteur d'event
 document.getElementById('randAll')
   .addEventListener('click', () => {
     // debug
@@ -77,12 +79,12 @@ document.getElementById('toLeft')
   .addEventListener('click', () => {
     state.direction = '270deg';
     renderGradient();
-    renderColors();
+    // renderColors();
   });
 
 document.getElementById('toRight')
   .addEventListener('click', () => {
     state.direction = '90deg';
     renderGradient();
-    renderColors();
+    // renderColors();
   });
