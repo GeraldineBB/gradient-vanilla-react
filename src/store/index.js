@@ -15,6 +15,8 @@ import reducer from '../reducers';
 // c'est le reducer qui connait les rouages de la machine 
 // store = objet qui protège le state ! 
 // si on veut le modifier : on doit passer par le store > getSTate pour découvire la valeur courante du state et dispatch pour dire une intention au store de ce qu'on veut modifier (le reducer va le faire)
-const store = createStore (reducer);
-
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
 export default store; 

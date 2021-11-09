@@ -63,13 +63,27 @@ const reducer = (state = initialState, action) => {
       return {...state, 
         direction: '90deg'};
 
+    case 'CHANGE_FIRST_COLOR':
+      console.log(action);
+      return {
+        ...state, 
+        firstColor: action.color,
+        nbColors: state.nbColors + 1
+      }
+
+    case 'CHANGE_LAST_COLOR':
+      return {
+      ...state,
+      lastColor: action.color, 
+      nbColors: state.nbColors +1
+      }
+  
 
     default:
-      console.log('ça je sais pas faire');
-      break;
+      // quand on sait pas faire il vaut mieux rien faire
+      return state; 
   } 
 
-  return state; 
 };
 
 export default reducer;

@@ -47,6 +47,7 @@ function renderGradient() {
   `;
 }
 function renderColors() {
+  console.log('nouvelle execution renderColor');
   const { firstColor, lastColor } = store.getState();
 
   const firstSpan = generateSpanColor(firstColor);
@@ -64,42 +65,27 @@ renderGradient();
 renderColors();
 
 //=== on va abonner nos fonctions de rendu aux mises à jour du state
-store.suscribe(renderColors);
-store.suscribe(renderGradient);
-store.suscribe(renderNbColors);
+// == On abonne nos fonctions de rendu aux mises à jour du state
+store.subscribe(renderColors);
+store.subscribe(renderGradient);
+store.subscribe(renderNbColors);
 
 // == Controls
 // bouton Random All : on ajoute un écouteur d'event
 document.getElementById('randAll')
   .addEventListener('click', () => {
-    // debug
-    console.log('Random all colors');
-    // data
-    state.nbColors += 2;
-    state.firstColor = randomHexColor();
-    state.lastColor = randomHexColor();
-    // ui
-    renderNbColors();
-    renderGradient();
-    renderColors();
+    store.dispatch({ type: 'CHANGE_FIRST_COLOR', color: randomHexColor() });
+    store.dispatch({ type: 'CHANGE_LAST_COLOR', color: randomHexColor() });
   });
 
 document.getElementById('randFirst')
   .addEventListener('click', () => {
-    state.nbColors += 1;
-    state.firstColor = randomHexColor();
-    renderNbColors();
-    renderGradient();
-    renderColors();
+    store.dispatch({ type: 'CHANGE_FIRST_COLOR', color: randomHexColor() });
   });
 
 document.getElementById('randLast')
   .addEventListener('click', () => {
-    state.nbColors += 1;
-    state.lastColor = randomHexColor();
-    renderNbColors();
-    renderGradient();
-    renderColors();
+    store.dispatch({ type: 'CHANGE_LAST_COLOR', color: randomHexColor() });
   });
 
 document.getElementById('toLeft')
