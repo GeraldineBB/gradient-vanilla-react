@@ -29,6 +29,15 @@ export const changeDirection = (direction) => (
 //   return {type : CHANGE_DIRECTION_DEGREES, direction : direction}
 // }
 
-export const changeColor = (type, color) => (
-  {type: type, color: color }
-)
+// il vaut mieux faire un action creator par action type
+// export const changeColor = (type, color) => (
+//   {type: type, color: color }
+// )
+export const changeLastColor = (color) => (
+  {type: CHANGE_LAST_COLOR, color}
+);
+
+export const changeFirstColor = (color) => (
+  {type: CHANGE_FIRST_COLOR, color}
+);
+

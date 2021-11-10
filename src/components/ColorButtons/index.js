@@ -4,7 +4,7 @@
 // l'appel à ce hook nous permet de récupérer une référence 
 // à la méthode dispatch du store sur laquelle notre app est branchée 
 import {useDispatch} from 'react-redux'; 
-import { CHANGE_FIRST_COLOR, CHANGE_LAST_COLOR, changeColor } from '../../actions';
+import { CHANGE_FIRST_COLOR, CHANGE_LAST_COLOR, changeFirstColor, changeLastColor } from '../../actions';
 import { randomHexColor } from '../../utils';
 import './styles.scss';
 
@@ -20,7 +20,14 @@ const ColorButtons = () => {
       id="randFirst"
       onClick={
         () => {
-          dispatch ({type : CHANGE_FIRST_COLOR, color : randomHexColor()})
+        // avec Action Creator
+        // ici, on demande à la fonction changeFirstColor
+        // de créer l'action pour nous.
+        // changeFirstColor est un Action Creator,
+        // une fonction dont le but est de créer une action
+        // on crée une Action Creator par type !! 
+
+          dispatch (changeFirstColor(randomHexColor()));
         }
       }
       >Random First
@@ -31,8 +38,9 @@ const ColorButtons = () => {
       id="randAll"
       onClick={
         () => {
-          dispatch ({type: CHANGE_FIRST_COLOR, color: randomHexColor()});
-          dispatch ({type: CHANGE_LAST_COLOR, color: randomHexColor()})
+          // avec Action Creator
+          dispatch (changeFirstColor(randomHexColor()));
+          dispatch (changeLastColor(randomHexColor()))
         }
       }
       >Random All
@@ -44,7 +52,7 @@ const ColorButtons = () => {
       onClick={
         () => {
           // avec Action Creator
-          dispatch (changeColor(CHANGE_LAST_COLOR, randomHexColor()))
+          dispatch (changeLastColor(randomHexColor()))
         }
       }
       >Random Last
