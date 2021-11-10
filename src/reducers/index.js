@@ -1,6 +1,8 @@
 // fonction qui va permttre de déterminer une nouvelle valeur du state (va retourner le state en réponse à une demande de modification)
 // on va se servir du reducer pour la valeur initiale du state
 
+import { CHANGE_DIRECTION_DEGREES } from "../actions";
+
 // on peut définir l'état initial de notre application
 // dans le fichier définissant le reducer
 // en effet le reducer est appelé une première fois par le store sans argument
@@ -78,7 +80,7 @@ const reducer = (state = initialState, action = {}) => {
       nbColors: state.nbColors +1
       }
   
-    case 'CHANGE_DIRECTION_DEGREES':
+    case CHANGE_DIRECTION_DEGREES:
       return {
         ...state,
         direction: action.direction, 

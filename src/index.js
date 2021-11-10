@@ -3,6 +3,9 @@ import { randomHexColor, generateSpanColor } from './utils';
 
 import store from './store';
 
+// on importe notre variable du type d'actions
+import { CHANGE_DIRECTION_DEGREES } from './actions';
+
 console.log(store); 
 
 // le store est un objet qui expose 3 fonctions principales:
@@ -111,23 +114,27 @@ document.getElementById('toRight')
 
 // challenge du soir : on écoute les évents sur le bouton
 // on donne un ordre, le reducer va interpreter l'ordre ensuite
+// pour éviter les fautes de frappe, on a fait un fichier actions, 
+// qui contient les variables de nos actions type
 
 document.getElementById('to45degree')
 .addEventListener('click', () => {
-  store.dispatch({type : 'CHANGE_DIRECTION_DEGREES', direction : '45deg'})
+  // on peut considérer que la direction où aller est une sorte 
+  // de paramètre d'une action plus générique
+  store.dispatch({type : CHANGE_DIRECTION_DEGREES, direction : '45deg'})
 }); 
 
 document.getElementById('to135degree')
 .addEventListener('click', () => {
-  store.dispatch({type : 'CHANGE_DIRECTION_DEGREES', direction : '135deg'})
+  store.dispatch({type : CHANGE_DIRECTION_DEGREES, direction : '135deg'})
 }); 
 
 document.getElementById('to225degree')
 .addEventListener('click', () => {
-  store.dispatch({type : 'CHANGE_DIRECTION_DEGREES', direction : '225deg'})
+  store.dispatch({type : CHANGE_DIRECTION_DEGREES, direction : '225deg'})
 });
 
 document.getElementById('to315degree')
 .addEventListener('click', () => {
-  store.dispatch({type : 'CHANGE_DIRECTION_DEGREES', direction : '315deg'})
+  store.dispatch({type : CHANGE_DIRECTION_DEGREES, direction : '315deg'})
 });
