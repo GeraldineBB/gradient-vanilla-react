@@ -28,3 +28,7 @@ export const changeDirection = (direction) => (
 // export const changeDirection = (direction) => {
 //   return {type : CHANGE_DIRECTION_DEGREES, direction : direction}
 // }
+
+export const changeColor = (type, color) => (
+  {type: type, color: color }
+)
