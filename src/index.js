@@ -4,7 +4,7 @@ import { randomHexColor, generateSpanColor } from './utils';
 import store from './store';
 
 // on importe notre variable du type d'actions
-import { CHANGE_DIRECTION_DEGREES } from './actions';
+import { changeDirection, CHANGE_DIRECTION_DEGREES } from './actions';
 
 console.log(store); 
 
@@ -121,6 +121,12 @@ document.getElementById('to45degree')
 .addEventListener('click', () => {
   // on peut considérer que la direction où aller est une sorte 
   // de paramètre d'une action plus générique
+  // il faut ensuite rajouter une autre prop à notre objet action qui contient la direction
+  // Notre action générique n'est pas traitable en l'état, on doit
+  // la compléter en induqnt la nouvelle direction.
+  // Pour ce faire, on ajoute une propriété à notre objet action
+  // pour stocker cette information.
+  // On appelle cette information complémentaire le PAYLOAD
   store.dispatch({type : CHANGE_DIRECTION_DEGREES, direction : '45deg'})
 }); 
 
@@ -134,7 +140,8 @@ document.getElementById('to225degree')
   store.dispatch({type : CHANGE_DIRECTION_DEGREES, direction : '225deg'})
 });
 
+// on utilise notre fonction qui nous facilite la création d'objet
 document.getElementById('to315degree')
 .addEventListener('click', () => {
-  store.dispatch({type : CHANGE_DIRECTION_DEGREES, direction : '315deg'})
+  store.dispatch(changeDirection('315deg')); 
 });
