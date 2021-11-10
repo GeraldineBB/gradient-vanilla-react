@@ -1,7 +1,7 @@
 // fonction qui va permttre de déterminer une nouvelle valeur du state (va retourner le state en réponse à une demande de modification)
 // on va se servir du reducer pour la valeur initiale du state
 
-import { CHANGE_DIRECTION_DEGREES } from "../actions";
+import { CHANGE_DIRECTION_DEGREES, CHANGE_DIRECTION_TO_LEFT, CHANGE_DIRECTION_TO_RIGHT, CHANGE_FIRST_COLOR, CHANGE_LAST_COLOR } from "../actions";
 
 // on peut définir l'état initial de notre application
 // dans le fichier définissant le reducer
@@ -38,7 +38,7 @@ const reducer = (state = initialState, action = {}) => {
   // là on va utiliser une structure de controle qui va vérifier le type d'action > switch !
 
   switch(action.type) {
-    case 'CHANGE_DIRECTION_TO_LEFT':
+    case CHANGE_DIRECTION_TO_LEFT:
       console.log('je dois changer la direction pour aller à gacuhe')
       // je vais ici construire une nouvelle version du state et la retourner
       // on peut reprendre les prop du state déjà existant 
@@ -52,7 +52,7 @@ const reducer = (state = initialState, action = {}) => {
 
       return newState; 
 
-    case 'CHANGE_DIRECTION_TO_RIGHT':
+    case CHANGE_DIRECTION_TO_RIGHT:
       console.log('je dois changer la direction pour aller à droite');
 
       // const newState = {...state
@@ -65,7 +65,7 @@ const reducer = (state = initialState, action = {}) => {
       return {...state, 
         direction: '90deg'};
 
-    case 'CHANGE_FIRST_COLOR':
+    case CHANGE_FIRST_COLOR:
       console.log(action);
       return {
         ...state, 
@@ -73,7 +73,7 @@ const reducer = (state = initialState, action = {}) => {
         nbColors: state.nbColors + 1
       }
 
-    case 'CHANGE_LAST_COLOR':
+    case CHANGE_LAST_COLOR:
       return {
       ...state,
       lastColor: action.color, 
