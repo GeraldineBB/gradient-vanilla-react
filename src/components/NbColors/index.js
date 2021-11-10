@@ -16,7 +16,7 @@ const NbColors = () => {
   // Le fait d'utiliser le hook useSelector abonne le composant aux
   //  mises à jour du state (équivalent à subscribe)
   const nbColors =  useSelector(
-    (state) => state.NbColors, 
+    (state) => state.nbColors, 
   )
 
   return (

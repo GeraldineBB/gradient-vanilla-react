@@ -16,6 +16,11 @@
   white-space: nowrap;
   line-height: 1.5;
   vertical-align: top;
+
+
+  &--active {
+    background-color: #eee;
+  }
 }
 .button:hover {
   border-color: #b5b5b5;
